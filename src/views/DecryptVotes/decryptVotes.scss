@@ -1,0 +1,246 @@
+.decryptVotes-view {
+    width: 89%;
+    max-width: 833px;
+    margin: auto;
+
+    .decryptVotes-card {
+        position: relative;
+        z-index: 2;
+        box-shadow: 0px 0px 10px rgb(4 4 4 / 46%);
+
+        @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+            background: rgba(16, 16, 17, 0.15); 
+            backdrop-filter: blur(40px);
+        }
+
+        /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+        @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+            background: #181b1c;
+        }
+
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;        
+
+        .decryptVotes-card-gameid{
+            margin-top: 10px;
+            margin-bottom: 16px;
+            display: inline-block;
+            font-family: Montserrat Light;
+            font-weight: 300;
+            font-size: 17px;
+
+            .decryptVotes-card-gameid {
+                color: #ffffff;
+                font-weight: bold;
+                margin-right: 60px;
+            }
+            .decryptVotes-card-gameid-input {
+                background-color: #000000;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 8px;
+                font-size: 17px;
+                box-shadow: 1px 1px 1px 0.5px rgba(176, 174, 174, 0.903);
+                color: #ffffff;
+                display: inline-block;
+                height: 42px;
+            }
+
+            .decryptVotes-card-gameid-input-disabled {
+                background-color: #333 !important;
+                color: #333 !important;
+                box-shadow: none !important;
+                border: 1px solid rgb(74, 73, 73);
+                cursor: not-allowed !important;
+            }
+
+            .decryptVotes-card-or {
+                align-self: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                font-family: Montserrat Light;
+                font-weight: 300;
+                font-size: 14px;
+                color: #ffffff;
+                font-weight: bold;
+                display: inline-block;
+                margin-left: 25px;
+            }
+        }
+
+        .decryptVotes-card-secret{
+            margin-top: 10px;
+            margin-bottom: 16px;
+            display: inline-block;
+            font-family: Montserrat Light;
+            font-weight: 300;
+            font-size: 17px;
+            display: flex;
+
+            .decryptVotes-card-secret {
+                color: #ffffff;
+                font-weight: bold;
+                margin-right: 80px;
+            }
+            .decryptVotes-card-secret-input {
+                background-color: #000000;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 8px;
+                font-size: 17px;
+                box-shadow: 1px 1px 1px 0.5px rgba(176, 174, 174, 0.903);
+                color: #ffffff;
+                display: inline-block;
+                width: 60%;
+                height: 42px;
+            }
+
+            .decryptVotes-card-secret-input-disabled {
+                background-color: #333 !important;
+                color: #333 !important;
+                box-shadow: none !important;
+                border: 1px solid rgb(74, 73, 73);
+                cursor: not-allowed !important;
+            }
+
+            .decryptVotes-card-or {
+                align-self: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                font-family: Montserrat Light;
+                font-weight: 300;
+                font-size: 14px;
+                color: #ffffff;
+                font-weight: bold;
+                display: inline-block;
+                margin-left: 25px;
+            }
+        }
+
+        .fetch-games-submit-btn {
+            background: rgba(33, 228, 62, 0.719);
+            border-radius: 10px;
+            padding: 14px 58px;
+            cursor: pointer;
+            margin: auto;
+            max-width: 170px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+
+            p {
+                font-family: Montserrat SemiBold;
+                font-weight: 600;
+                font-size: 15px;
+                color: #ffffff;
+            }
+        }
+
+        .td {
+            /*border-collapse: collapse;  Remove the default spacing between table cells */
+            border: 0.5px solid #ccc;
+            padding: 10px; /* Add some padding to the cells */
+            text-align: center; /* Align the text in the cells to the left */
+            font-family: Montserrat Light;
+            font-weight: normal;
+            font-size: 15px;
+            color: #ffffff;
+
+            .cell-image {
+                width: 200px;
+                height: 180px;
+                object-fit: cover;
+            }
+        }
+
+        .decryptVotes {
+            margin-top: 30px;
+        }
+          
+        .decryptVotes-card-header {
+            .decryptVotes-card-header-title {
+                font-family: Montserrat Bold;
+                font-weight: Bold;
+                font-size: 20px;
+                color: hsl(0, 0%, 100%);
+                margin-top: 14px;
+                margin-bottom: 14px;
+                
+            }
+            .decryptVotes-card-header-info {
+                font-family: Montserrat;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .decryptVotes-view {
+        .decryptVotes-card {
+            .decryptVotes-card-metrics {
+                .decryptVotes-card-apy,
+                .decryptVotes-card-tvl,
+                .decryptVotes-card-index {
+                    align-items: flex-start;
+                }
+
+                .decryptVotes-card {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+
+            .decryptVotes-card-area {
+                .decryptVotes-card-action-area {
+                    .decryptVotes-card-action-row {
+                        flex-direction: column;
+                        .decryptVotes-card-tab-panel {
+                            margin-left: 0;
+                            margin-top: 20px;
+                            min-width: none;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1240px) {
+    .decryptVotes-view {
+        width: 100%;
+    }
+}
+
+.decryptVotes-card-action-stage-btns-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .decryptVotes-card-action-stage-btn {
+        margin: 0px 30px;
+        padding: 6px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+
+        p {
+            font-family: Montserrat SemiBold;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    .decryptVotes-card-action-stage-btn.active {
+        p {
+            color: #ffffff;
+        }
+
+        border-bottom: 1px solid #ffffff;
+    }
+}

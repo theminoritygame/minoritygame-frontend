@@ -1,0 +1,246 @@
+ .challenge-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+
+    width: 89%;
+    max-width: 833px;
+    margin: auto;
+
+    .challenge-infos-wrap {
+        z-index: 2;
+        position: relative;
+        z-index: 2;
+
+        @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+            background: rgba(36, 39, 41, 0.1);
+            backdrop-filter: blur(40px);
+        }
+
+        /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+        @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+            background: #181b1c;
+        }
+
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+
+        select {
+            /* styling */
+            border: thin solid rgb(249, 249, 247);
+            border-radius: 4px;
+            display: inline-block;
+            line-height: 1.5em;
+            padding: 0.5em 3.5em 0.5em 1em;
+            background-color: #070707;
+            color: rgb(250, 250, 250);
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 500;
+            width: 40%;
+            border-radius: 4px;
+            transition: all 0.3s ease-in-out;
+            
+            /* reset */
+            margin: 0;      
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            /* Add a subtle hover effect */
+            &:hover {
+                border-color: #777;
+            }
+        
+            /* Add a focus effect */
+            &:focus {
+                border-color: #333;
+            }
+        }
+        
+        select.minimal.option {
+            padding: 10em;
+            line-height: 1.5em;
+            margin: 10px;
+        }
+
+        select.minimal {
+            background-image:
+                linear-gradient(45deg, transparent 50%, gray 50%),
+                linear-gradient(135deg, gray 50%, transparent 50%),
+                linear-gradient(to right, #ccc, #ccc);
+            background-position:
+                calc(100% - 20px) calc(1em + 2px),
+                calc(100% - 15px) calc(1em + 2px),
+                calc(100% - 2.5em) 0.5em;
+            background-size:
+                5px 5px,
+                5px 5px,
+                1px 1.5em;
+            background-repeat: no-repeat;
+        }
+        
+        select.minimal:focus {
+            background-image:
+                linear-gradient(45deg, rgb(20, 4, 247) 50%, transparent 50%),
+                linear-gradient(135deg, transparent 50%, green 50%),
+                linear-gradient(to right, #ccc, #ccc);
+            background-position:
+                calc(100% - 15px) 1em,
+                calc(100% - 20px) 1em,
+                calc(100% - 2.5em) 0.5em;
+            background-size:
+                5px 5px,
+                5px 5px,
+                1px 1.5em;
+            background-repeat: no-repeat;
+            border-color: rgb(243, 245, 243);
+            outline: 0;
+        }
+
+        .challenge-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0px 0px 10px rgb(4 4 4 / 46%);
+
+            position: relative;
+            z-index: 2;
+
+            @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+                background: rgba(16, 16, 17, 0.15); 
+                backdrop-filter: blur(40px);
+            }
+
+            /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+            @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+                background: #181b1c;
+            }
+
+            border-radius: 10px;
+            padding: 13px 0;
+
+            .card-title {
+                font-family: Montserrat Medium;
+                font-weight: 500;
+                font-size: 20px;
+                color: rgba(255, 255, 255, 0.6);
+                display: flex;
+                align-items: center;
+            }
+
+            .stake-card-action-row {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+
+                .stake-card-action-input {
+                    width: 100%;
+                    background: rgba(255, 255, 255, 0.2);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 10px;
+                    outline: none;
+                    .MuiOutlinedInput-input {
+                        font-family: Montserrat Medium;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: rgba(255, 255, 255, 0.6);
+                        padding: 14px 20px;
+                    }
+                    .MuiOutlinedInput-notchedOutline {
+                        border-color: rgba(255, 255, 255, 0.2) !important;
+                    }
+                }
+
+                .stake-card-tab-panel {
+                    min-width: 215px;
+                    margin-left: 10px;
+
+                    .stake-card-tab-panel-btn {
+                        background: rgba(255, 255, 255, 0.2);
+                        box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
+                        border-radius: 10px;
+                        padding: 14px 0px;
+                        cursor: pointer;
+                        text-align: center;
+
+                        p {
+                            font-family: Montserrat SemiBold;
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 18px;
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .challenge-card-desc-top {
+            display: flex;
+            align-items: flex-start;    
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+
+            .challenge-card-desc-title {
+                font-family: Montserrat Medium;
+                font-weight: normal;
+                font-size: 15px;
+                color: #cfcece;
+                margin: 0 auto 100 auto;
+
+                .small {
+                    font-family: Montserrat Medium;
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: #999797;
+                }
+            }
+        }
+        .challenge-card-desc {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-bottom: 30px;
+
+            .challenge-card-desc-title {
+                font-family: Montserrat Medium;
+                font-weight: normal;
+                font-size: 15px;
+                color: #cfcece;
+                margin: 0 auto 100 auto;
+
+                .small {
+                    font-family: Montserrat Medium;
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: #999797;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .challenge-farm,
+    .challenge-card-wallet-notification {
+        margin-bottom: 150px;
+    }
+    .challenge-card-wallet-desc-text {
+        margin-bottom: 150px !important;
+    }
+}

@@ -1,0 +1,256 @@
+.claimPrize-view {
+    width: 89%;
+    margin: auto;
+
+    .claimPrize-card {
+        position: relative;
+        z-index: 2;
+        box-shadow: 0px 0px 10px rgb(4 4 4 / 46%);
+
+        @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+            background: rgba(16, 16, 17, 0.15); 
+            backdrop-filter: blur(40px);
+        }
+
+        /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+        @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+            background: #181b1c;
+        }
+
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;     
+
+        .challenge-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0px 0px 10px rgb(4 4 4 / 46%);
+
+            position: relative;
+            z-index: 2;
+
+            @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+                background: rgba(16, 16, 17, 0.15); 
+                backdrop-filter: blur(40px);
+            }
+
+            /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+            @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+                background: #181b1c;
+            }
+
+            border-radius: 10px;
+            padding: 13px 0;
+
+            .card-title {
+                font-family: Montserrat Medium;
+                font-weight: 500;
+                font-size: 20px;
+                color: rgba(255, 255, 255, 0.6);
+                display: flex;
+                align-items: center;
+            }
+
+            .stake-card-action-row {
+                width: 90%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 20px;
+
+                .stake-card-action-input {
+                    width: 25%;
+                    background: rgba(255, 255, 255, 0.2);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 10px;
+                    outline: none;
+                    margin-left: 15px;
+                    .MuiOutlinedInput-input {
+                        font-family: Montserrat Medium;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: rgba(255, 255, 255, 0.6);
+                        padding: 14px 20px;
+                    }
+                    .MuiOutlinedInput-notchedOutline {
+                        border-color: rgba(255, 255, 255, 0.2) !important;
+                    }
+                }
+
+                .stake-card-tab-panel {
+                    width: fit-content;
+                    min-width: 215px;
+                    margin-left: 5%;
+
+                    .stake-card-tab-panel-btn {
+                        background: rgba(255, 255, 255, 0.2);
+                        box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
+                        border-radius: 10px;
+                        padding: 14px 0px;
+                        cursor: pointer;
+                        text-align: center;
+
+                        p {
+                            font-family: Montserrat SemiBold;
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 18px;
+                            color: #ffffff;
+                        }
+                    }
+
+                    .disabledbutton {
+                        pointer-events: none;
+                        opacity: 0.4;
+                    }
+                }
+            }
+
+            .switch-style {
+                margin-top: 20px;
+                margin-left: 0px;
+                align-self: center;
+            }
+        }
+
+        .claimPrize-card-submit-btn {
+            background: #2525ca;
+            border-radius: 10px;
+            padding: 14px 14px;
+            cursor: pointer;
+            margin: 4px;
+            width: 120px ;
+            max-width: 120px;
+            font-family: Montserrat SemiBold;
+            font-weight: 500;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .prizeClaimed-card-submit-btn {
+            background: grey;
+            border-radius: 10px;
+            padding: 20px 14px;
+            cursor: pointer;
+            align-items: center;
+            margin: 4px;
+            width: 120px;
+            max-width: 120px;
+            font-family: Montserrat SemiBold;
+            font-weight: 500;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .noWinnings {
+            display: none;
+        }
+
+        .connect-wallet-btn {
+            max-width: 190px;
+            cursor: pointer;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        .claim-prize-table{
+            visibility: hidden;
+            margin-top: 50px;
+            background-color: #1f1f1f;
+            color: #ffffff;
+            border-collapse: collapse;
+            font-family: Montserrat Light;
+            font-size: 15px;
+          
+            th.to, th.th1, th.tq {
+              background-color: #222222;
+              border: 0.5px solid #333333;
+              padding: 10px;
+              text-align: center;
+            }
+          
+            .to, .th1, .tq {
+              background-color: #333333;
+              border: 0.5px solid #444444;
+              padding: 10px;
+              text-align: center;
+            }
+
+            // th.tq, td.tq {
+            //     width: 900px;
+            // }
+
+            // th.to, td.to {
+            //     width: 350px;
+            //     padding: 4px;
+            // }
+
+            .win {
+                background-color: #0ce13a52;
+            }
+    
+            .lose {
+                background-color: #d30f0fac;
+            }
+        }
+
+        .zeroWonGames {
+            display: flex;
+            align-items:center;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 40px;
+            margin-left: 40px;
+            margin-bottom: 10px;
+            font-family: Montserrat Medium;
+            font-weight: normal;
+            font-size: 15px;
+            color: #999797;
+            visibility: hidden;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .claimPrize-view {
+        .claimPrize-card {
+            .claimPrize-card-metrics {
+                .claimPrize-card-apy,
+                .claimPrize-card-tvl,
+                .claimPrize-card-index {
+                    align-items: flex-start;
+                }
+
+                .claimPrize-card {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+
+            .claimPrize-card-area {
+                .claimPrize-card-action-area {
+                    .claimPrize-card-action-row {
+                        flex-direction: column;
+                        .claimPrize-card-tab-panel {
+                            margin-left: 0;
+                            margin-top: 20px;
+                            min-width: none;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1240px) {
+    .claimPrize-view {
+        width: 100%;
+    }
+}

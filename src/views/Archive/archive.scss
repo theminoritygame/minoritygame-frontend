@@ -1,0 +1,511 @@
+.archive-view {
+    width: 89%;
+    max-width: 833px;
+    margin: auto;
+
+    .archive-card {
+        position: relative;
+        z-index: 2;
+        box-shadow: 0px 0px 10px rgb(4 4 4 / 46%);
+
+        @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+            background: rgba(16, 16, 17, 0.15); 
+            backdrop-filter: blur(40px);
+        }
+
+        /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+        @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+            background: #181b1c;
+        }
+
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+
+        select {
+            /* styling */
+            border: thin solid rgb(249, 249, 247);
+            border-radius: 4px;
+            display: inline-block;
+            line-height: 1.5em;
+            padding: 0.5em 3.5em 0.5em 1em;
+            background-color: #070707;
+            color: rgb(250, 250, 250);
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 500;
+            width: 40%;
+            // padding: 12px 20px;
+            // margin: 8px 0;
+            border-radius: 4px;
+            transition: all 0.3s ease-in-out;
+            
+            /* reset */
+            margin: 0;      
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            /* Add a subtle hover effect */
+            &:hover {
+                border-color: #777;
+            }
+        
+            /* Add a focus effect */
+            &:focus {
+                border-color: #333;
+            }
+        
+            /* Add a custom arrow icon */
+            // &:after {
+            //     content: "";
+            //     border: solid #333;
+            //     border-width: 0 4px 4px 0;
+            //     display: inline-block;
+            //     padding: 10px;
+            //     transform: rotate(45deg);
+            //     position: absolute;
+            //     right: 0px;
+            //     top: 50%;
+            //     margin-top: -3px;
+            // }
+        }
+        
+        option {
+            padding: 100px;
+            min-height: 4em;
+        }          
+            
+        select.minimal {
+            background-image:
+                linear-gradient(45deg, transparent 50%, gray 50%),
+                linear-gradient(135deg, gray 50%, transparent 50%),
+                linear-gradient(to right, #ccc, #ccc);
+            background-position:
+                calc(100% - 20px) calc(1em + 2px),
+                calc(100% - 15px) calc(1em + 2px),
+                calc(100% - 2.5em) 0.5em;
+            background-size:
+                5px 5px,
+                5px 5px,
+                1px 1.5em;
+            background-repeat: no-repeat;
+        }
+        
+        select.minimal:focus {
+            background-image:
+                linear-gradient(45deg, rgb(20, 4, 247) 50%, transparent 50%),
+                linear-gradient(135deg, transparent 50%, green 50%),
+                linear-gradient(to right, #ccc, #ccc);
+            background-position:
+                calc(100% - 15px) 1em,
+                calc(100% - 20px) 1em,
+                calc(100% - 2.5em) 0.5em;
+            background-size:
+                5px 5px,
+                5px 5px,
+                1px 1.5em;
+            background-repeat: no-repeat;
+            border-color: rgb(243, 245, 243);
+            outline: 0;
+        }
+        
+        
+        // select:-moz-focusring {
+        //     color: transparent;
+        //     text-shadow: 0 0 0 #000;
+        // }
+        
+        // body {
+        //     background-color: rgb(0,159,214);
+        //     font: bold 2em/100% "Helvetica Neue", Arial, sans-serif;
+        //     padding: 2em 0;
+        //     text-align: center;
+        // }
+        
+        // h1 {
+        //     color: white;
+        //     line-height: 120%;
+        //     margin: 0 auto 2rem auto;
+        //     max-width: 30rem;
+        // }
+
+        .challenge-card-desc-top {
+            display: flex;
+            align-items: flex-start;    
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+
+            .challenge-card-desc-title {
+                font-family: Montserrat Medium;
+                font-weight: normal;
+                font-size: 15px;
+                color: #cfcece;
+                margin: 0 auto 100 auto;
+
+                .small {
+                    font-family: Montserrat Medium;
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: #999797;
+                }
+            }
+        }
+        .challenge-card-desc {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-bottom: 30px;
+
+            .challenge-card-desc-title {
+                font-family: Montserrat Medium;
+                font-weight: normal;
+                font-size: 15px;
+                color: #cfcece;
+                margin: 0 auto 100 auto;
+
+                .small {
+                    font-family: Montserrat Medium;
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: #999797;
+                }
+            }
+        }
+
+        .archive-card-grid {
+            margin: 0;
+            width: 100%;
+        }
+
+        .th, .td {
+            /*border-collapse: collapse;  Remove the default spacing between table cells */
+            border: 0.5px solid #ccc;
+            padding: 10px; /* Add some padding to the cells */
+            text-align: center; /* Align the text in the cells to the left */
+            font-family: Montserrat Light;
+            font-weight: normal;
+            font-size: 15px;
+            color: #ffffff;
+
+            .cell-image {
+                width: 200px;
+                height: 180px;
+                object-fit: cover;
+            }
+        }
+          
+        .th {
+            background-color: #070707; /* Give the table header cells a light gray background color */
+            font-weight: bold; /* Make the text in the header cells bold */
+          }
+       
+        .tq {
+            font-family: Montserrat Bold;
+            font-size: 16x;
+            color: #ffffff;
+            max-width: 550px;
+        }
+          
+        .tr:hover {
+            background-color: #e9e9e9cd; /* Give the hovered row a light gray background color */
+        }
+
+        .win {
+            background-color: #0ce13a52;
+        }
+
+        .lose {
+            background-color: #d30f0fac;
+        }
+
+        .claimPrize {
+            margin-top: 30px;
+        }
+
+        .claimPrize:hover {
+            cursor: pointer;
+        }
+          
+        .archive-card-header {
+            .archive-card-header-title {
+                font-family: Montserrat Bold;
+                font-weight: Bold;
+                font-size: 20px;
+                color: #ffffff;
+                margin: 14px;
+                margin-top: 50px;
+            }
+            .archive-card-table-text {
+                font-family: Montserrat Medium;
+                font-weight: normal;
+                font-size: 15px;
+                color: #ffffff;
+                margin: 14px;
+                margin-top: 50px;
+            }
+        }
+
+        .archive-card-metrics {
+            display: flex;
+            width: 100%;
+            padding: 0;
+            text-align: center;
+            margin-top: 10px;
+
+            .archive-card-apy,
+            .archive-card-tvl,
+            .archive-card-index {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+
+                .archive-card-metrics-title {
+                    font-family: Montserrat Medium;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 20px;
+                    color: rgba(255, 255, 255, 0.6);
+                    margin-bottom: 2px;
+                }
+
+                .archive-card-metrics-value {
+                    font-family: Montserrat Bold;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 24px;
+                    line-height: 29px;
+                    color: #ffffff;
+                }
+            }
+        }
+
+        .archive-card-area {
+            .archive-card-wallet-notification {
+                text-align: center;
+
+                .archive-card-wallet-connect-btn {
+                    background: rgba(33, 105, 228, 1);
+                    box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
+                    border-radius: 10px;
+                    padding: 14px 58px;
+                    cursor: pointer;
+                    margin: auto;
+                    max-width: 280px;
+                    margin-top: 20px;
+
+                    p {
+                        font-family: Montserrat SemiBold;
+                        font-weight: 600;
+                        font-size: 18px;
+                        color: #ffffff;
+                    }
+                }
+
+                .archive-card-wallet-desc-text {
+                    font-family: Montserrat Light;
+                    font-weight: 300;
+                    font-size: 14px;
+                    color: rgba(255, 255, 255, 0.6);
+                    margin-top: 10px;
+                    margin-bottom: 6px;
+                }
+            }
+
+            .archive-card-action-area {
+                width: 100%;
+                margin-top: 25px;
+
+                .archive-card-action-row {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 20px;
+
+                    .archive-card-action-input {
+                        width: 100%;
+
+                        background: rgba(255, 255, 255, 0.2);
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        border-radius: 10px;
+                        outline: none;
+
+                        .MuiOutlinedInput-input {
+                            font-family: Montserrat Medium;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 16px;
+                            color: rgba(255, 255, 255, 0.6);
+                            padding: 14px 20px;
+                        }
+
+                        .MuiOutlinedInput-notchedOutline {
+                            border-color: rgba(255, 255, 255, 0.2) !important;
+                        }
+
+                        .archive-card-action-input-btn {
+                            cursor: pointer;
+
+                            p {
+                                font-family: Montserrat SemiBold;
+                                font-weight: 600;
+                                font-size: 18px;
+                                color: #ffffff;
+                            }
+                        }
+                    }
+
+                    .archive-card-tab-panel {
+                        min-width: 215px;
+                        margin-left: 10px;
+
+                        .archive-card-tab-panel-btn {
+                            background: rgba(255, 255, 255, 0.2);
+                            box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
+                            border-radius: 10px;
+                            padding: 14px 0px;
+                            cursor: pointer;
+                            text-align: center;
+
+                            p {
+                                font-family: Montserrat SemiBold;
+                                font-style: normal;
+                                font-weight: 600;
+                                font-size: 18px;
+                                color: #ffffff;
+                            }
+                        }
+                    }
+                }
+
+                .archive-card-action-help-text {
+                    margin-top: 10px;
+
+                    p {
+                        font-family: Montserrat Light;
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 14px;
+                        line-height: 17px;
+                        text-align: center;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+                }
+            }
+
+            .archive-user-data {
+                justify-content: center;
+                margin: auto;
+                padding: 0 5px;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0px;
+
+    .data-row-name {
+        font-family: Montserrat Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: #ffffff;
+    }
+
+    .data-row-grey {
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .data-row-value {
+        font-family: Montserrat;
+        font-size: 14px;
+        line-height: 17px;
+        color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .archive-view {
+        .archive-card {
+            .archive-card-metrics {
+                .archive-card-apy,
+                .archive-card-tvl,
+                .archive-card-index {
+                    align-items: flex-start;
+                }
+
+                .archive-card {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+
+            .archive-card-area {
+                .archive-card-action-area {
+                    .archive-card-action-row {
+                        flex-direction: column;
+                        .archive-card-tab-panel {
+                            margin-left: 0;
+                            margin-top: 20px;
+                            min-width: none;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1240px) {
+    .archive-view {
+        width: 100%;
+    }
+}
+
+.archive-card-action-stage-btns-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .archive-card-action-stage-btn {
+        margin: 0px 30px;
+        padding: 6px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+
+        p {
+            font-family: Montserrat SemiBold;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    .archive-card-action-stage-btn.active {
+        p {
+            color: #ffffff;
+        }
+
+        border-bottom: 1px solid #ffffff;
+    }
+}

@@ -1,0 +1,20 @@
+  .GameSwitch-switch {
+    margin-right: 10px;
+  }
+  
+  .GameSwitch-switch .MuiSwitch-track {
+    background-color: gray;
+  }
+  
+  .GameSwitch-switch .MuiSwitch-thumb {
+    background-color: lightgray;
+  }
+  
+  .GameSwitch-switch .MuiSwitch-switchBase.Mui-checked {
+    color: white;
+  }
+  
+  .GameSwitch-switch .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+    background-color: darkgray;
+  }
+  

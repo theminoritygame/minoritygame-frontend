@@ -1,0 +1,113 @@
+.rules-view {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #d0d0d0;
+    width: 95%;
+    max-width: 1703px;
+    margin: auto;
+
+    .rules-card {
+        position: relative;
+        z-index: 2;
+
+        @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+            background: rgba(36, 39, 41, 0.1);
+            backdrop-filter: blur(40px);
+        }
+
+        /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+        @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+            background: #181b1c;
+        }
+
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+
+        .card-title {
+            font-family: Montserrat Medium;
+            font-weight: 500;
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.76);
+            margin-bottom: 20px;
+            margin-left: 15px;
+        }
+  
+        .rules-view h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #c8c7c7;
+            text-align: center;
+        }
+        
+        .rules-view h2 {
+            color: #a4a4a4;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            .desc {
+                font-size: 10px;
+                font-weight: normal;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                margin-left: 20px;
+            }
+        }
+        
+        .rules-view h3 {
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .rules-view p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .rules-view ol {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+
+        .arrow-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .arrow-list li:before {
+        content: "\21AA"; /* Unicode character for right arrow */
+        margin-right: 0.5em;
+        }
+          
+        
+        .rules-view li {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .rules-view code {
+            font-family: monospace;
+            background-color: #cfcece;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .rules-view a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .rules-view a:hover {
+            text-decoration: underline;
+        }
+    }
+}
+  
