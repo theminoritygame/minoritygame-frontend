@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Zoom } from "@material-ui/core";
+import { Grid, Zoom } from "@material-ui/core";
 import "./archive.scss";
 import { useHistory } from "react-router-dom";
 import { usePathForNetwork } from "../../hooks";
@@ -56,6 +56,7 @@ function Archive() {
     const [archiveSlice, setArchiveSlice] = useState<ArchiveSlice>(defaultArchiveSlice)
     const [gameCount, setGameCount] = useState<number| undefined>(undefined)
     const totalVotesLocal = useRef<number| undefined>(undefined)
+    const userVotesLocal = useRef<number| undefined>(undefined)
 
     // const [showClaimPrizeDialog, setShowClaimPrizeDialog] = useState(false)
     const [claimDialogInfo, setClaimDialogInfo] =useState<ClaimDialogInfo | undefined>(undefined)
@@ -67,7 +68,24 @@ function Archive() {
         <div className="archive-view">
             <Zoom in={true}>
                 <div className="archive-card">
-                    <select id="dropdown" className="minimal"></select>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <select id="dropdown" className="minimal" style={{height: 'fit-content'}}></select>
+                        <Grid item lg={12} md={12} sm={12} xs={12} className="game-side">
+                            <div className="game-card-topbar">
+                                {totalVotesLocal.current != undefined && (
+                                <p className="game-card-metrics-totalVotesCasted" id="totalVotesCasted">
+                                    Total vote count: {totalVotesLocal.current}
+                                </p>
+                                )}
+                                { userVotesLocal.current != undefined && (
+                                <p className="game-card-metrics-totalVotesCasted" id="totalVotesCasted">
+                                    Your vote count: {userVotesLocal.current}
+                                </p>
+                                )}
+                            </div>
+                        </Grid>
+                    </div>
+
                     { (archiveSlice.gameStateInfo && archiveSlice.gameStaticInfo) ? (
                         <div>
                             <div className="challenge-card-desc-top">
@@ -130,11 +148,6 @@ function Archive() {
                         <div className="archive-card-header">
                             <p className="archive-card-table-text">Game has been tied!
                             <br />your total vote count: {archiveSlice.gameResultInfo?.myTotalVotes.length}</p>
-                        </div>
-                    )}
-                    {archiveSlice.gameStateInfo?.gameState == 'FUCKED_UP' && totalVotesLocal.current != undefined && (
-                        <div className="archive-card-header">
-                            <p className="archive-card-table-text">total vote count: {totalVotesLocal.current}</p>
                         </div>
                     )}
                     {((archiveSlice.gameResultInfo?.myWinningVotes?.length && archiveSlice.gameStateInfo?.gameState == 'RESULT_LOCKED') || archiveSlice.gameStateInfo?.gameState == 'FUCKED_UP' && isConnected) && (
@@ -291,11 +304,20 @@ function Archive() {
             const infoPromise = gameContractReadHelper.fetchGameStaticInfo(gameId)
             const statePromise = gameContractReadHelper.fetchGamesState(gameId)
             const totalVotes = gameContractReadHelper.fetchTotalVotesCasted(gameId)
+            
+            if (web3Helper.connected) {
+                gameContractReadHelper.fetchVotesCastedBy(gameId, web3Helper.address).then( (res)=> {
+                    userVotesLocal.current = res.length
+                }).catch(err => {
+                    console.log('failed getting user vote cnt')
+                })
+            }
 
             const info = await infoPromise
             const state = await statePromise
             const tvotes = await totalVotes
             totalVotesLocal.current = tvotes.toNumber()
+            
 
             getGameResults(gameId).then((resultInfo: GameResultInfo) => {
                 setArchiveSlice({
