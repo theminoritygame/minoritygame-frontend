@@ -93,7 +93,7 @@ function Game() {
                                             <div className="game-card-topbar">
                                                 <p className="game-card-metrics-timer-container">
                                                     <span className="game-card-metrics-timer" id="timer">{getTimingStatement(gameInfo.gameID, gameInfo.gameStateInfo, gameInfo.gameStaticInfo)}</span>
-                                                    <span className="game-card-countdown" id="countdown"></span>
+                                                    <span className="game-card-countdown" id="countdownGame"></span>
                                                 </p>
                                                 <p className="game-card-metrics-totalVotesCasted" id="totalVotesCasted">
                                                     Total votes casted: {gameInfo.totalVotes}
@@ -245,6 +245,15 @@ function Game() {
         }
     })
 
+    useEffect(() => {    
+        // Cleanup function when the component is unmounted
+        return () => {
+            if (timer.current != undefined) {
+                clearInterval(timer.current)
+            }
+        };
+      }, []);
+      
     async function refreshTotalVotesCnt() {
 
         const gameId = gameInfo.gameID
@@ -260,7 +269,7 @@ function Game() {
 
     function getTimingStatement(gameID: number, gameStateInfo: GameStateInfo, staticInfo: GameStaticInfo) {
         if (timer.current == undefined) {
-            const timerActive = showCountdown(staticInfo, gameStateInfo, "countdown",
+            const timerActive = showCountdown(staticInfo, gameStateInfo, "countdownGame",
             (x) => {
                 timer.current = x
             },

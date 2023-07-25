@@ -78,7 +78,7 @@ function Archive() {
                                     <span id= "challengeDesc2" className="challenge-card-desc-title">{
                                         getTimeStatement(archiveSlice.gameStaticInfo, archiveSlice.gameStateInfo)
                                     }</span>
-                                    <span id="countdown" className="challenge-card-desc-title"></span>
+                                    <span id="countdownArchive" className="challenge-card-desc-title"></span>
                                 </p>
                             </div>
                         </div>
@@ -180,6 +180,15 @@ function Archive() {
         }
     }, [archiveSlice.gameStaticInfo])
 
+    useEffect(() => {    
+        // Cleanup function when the component is unmounted
+        return () => {
+            if (timer.current != undefined) {
+                clearInterval(timer.current)
+            }
+        };
+      }, []);
+
     async function fetchGameCount() {
         gameContractReadHelper.fetchGamesCount().then(cnt => {
             if (cnt.toNumber() != gameCount)
@@ -193,7 +202,7 @@ function Archive() {
         if (timer.current != undefined) {
             clearInterval(timer.current);
         }
-        return getGameStateDesc2AndSetTimer(gameStaticInfo, gameStateInfo, "countdown",
+        return getGameStateDesc2AndSetTimer(gameStaticInfo, gameStateInfo, "countdownArchive",
         (x)=> {
             timer.current = x
         }, 
